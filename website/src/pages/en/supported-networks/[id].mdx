@@ -28,13 +28,6 @@ const paths = networks.map((network) => ({ params: { id: network.id }, }))
 
 return { paths, fallback: false, } }
 
-export function BackLink() {
-  const { t } = useI18n()
-  const router = useRouter()
-  const locale = router.locale || router.defaultLocale || 'en'
-
-return ( <div className="mb-6"> <NextLink href={`/${locale}/supported-networks`} className="text-blue-500 hover:underline"> {t('supportedNetworks.back')} </NextLink> </div> ) }
-
 export function DynamicTitle({ title }) {
   useEffect(() => {
     document.title = title;
@@ -132,11 +125,7 @@ export function NonEVMResources() {
 
 <DynamicTitle title={props.network.fullName} />
 
-<BackLink />
-
-<h1 className="text-heading-large text-white xs:text-heading-xlarge">{props.network.fullName}</h1>
-
-This guide will quickly take you through how to initialize, create, and deploy your subgraph to Subgraph Studio.
+<h1 className="text-heading-large mb-4 text-white xs:text-heading-xlarge">{props.network.fullName}</h1>
 
 <NetworkDetails network={props.network} />
 
