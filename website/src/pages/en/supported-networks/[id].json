@@ -1,0 +1,10 @@
+{
+  "back": "← Back to Supported Networks",
+  "networkDetails": "Network Details",
+  "type": "Type",
+  "protocol": "Protocol",
+  "identifier": "Identifier",
+  "chainId": "Chain ID",
+  "nativeCurrency": "Native Currency",
+  "docs": "Docs"
+}
