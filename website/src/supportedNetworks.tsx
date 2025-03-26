@@ -5,6 +5,28 @@ import { useRouter } from 'next/router'
 import { Table } from '@/components'
 import { useI18n } from '@/i18n'
 
+// Networks with Token API support TO EXTERNALIZE @hayderkg
+const tokenAPINetworks = [
+  'mainnet-cl',
+  'holesky-cl',
+  'holesky',
+  'mainnet',
+  'sepolia-cl',
+  'sepolia',
+  'base',
+  'base-sepolia',
+  'bsc',
+  'arbitrum-nova',
+  'arbitrum-one',
+  'arbitrum-sepolia',
+  'polygon-amoy',
+  'matic',
+  'polygon-zkevm-cardona',
+  'polygon-zkevm',
+  'optimism',
+  'optimism-sepolia',
+]
+
 export async function getSupportedNetworks() {
   const registry = await NetworksRegistry.fromLatestVersion()
 
@@ -22,6 +44,7 @@ export async function getSupportedNetworks() {
           subgraphs,
           substreams,
           firehose,
+          tokenAPI: tokenAPINetworks.includes(network.id),
         },
       ]
     })
@@ -42,6 +65,7 @@ export function SupportedNetworksTable({ networks }: { networks: Awaited<ReturnT
           <th align="center">{t('supportedNetworks.subgraphs')}</th>
           <th align="center">{t('supportedNetworks.substreams')}</th>
           <th align="center">{t('supportedNetworks.firehose')}</th>
+          <th align="center">Token API</th>
         </tr>
         {networks.map((network) => (
           <tr key={network.id}>
@@ -61,6 +85,9 @@ export function SupportedNetworksTable({ networks }: { networks: Awaited<ReturnT
             </td>
             <td align="center" className="font-mono">
               {network.firehose ? '✓' : null}
+            </td>
+            <td align="center" className="font-mono">
+              {network.tokenAPI ? '✓' : null}
             </td>
           </tr>
         ))}
