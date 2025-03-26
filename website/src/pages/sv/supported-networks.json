@@ -1,7 +1,29 @@
 {
   "name": "Name",
   "id": "ID",
-  "subgraphs": "Subgrafer",
-  "substreams": "Underströmmar",
-  "firehose": "Firehose"
+  "subgraphs": "Subgraphs",
+  "substreams": "Substreams",
+  "firehose": "Firehose",
+  "back": "← Back to Supported Networks",
+  "networkDetails": "Network Details",
+  "type": "Type",
+  "protocol": "Protocol",
+  "identifier": "Identifier",
+  "chainId": "Chain ID",
+  "nativeCurrency": "Native Currency",
+  "docs": "Docs",
+  "features": {
+    "activeSubgraphs": {
+      "title": "Active Subgraphs",
+      "description": "Ready to query subgraphs with millions of data points"
+    },
+    "activeIndexers": {
+      "title": "Active Indexers",
+      "description": "Active indexers that indexes all the data"
+    },
+    "averageLatency": {
+      "title": "Average Latency",
+      "description": "Ready to query subgraphs with millions of data points"
+    }
+  }
 }

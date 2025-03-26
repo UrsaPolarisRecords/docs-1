@@ -1,0 +1,145 @@
+---
+title: Network Details
+hideContentHeader: true
+---
+
+import { useRouter } from 'next/router'
+import NextLink from 'next/link'
+import { NetworkDetails, Card } from '@/components'
+import { getSupportedNetworks } from '@/supportedNetworks'
+import { useI18n } from '@/i18n'
+import { useEffect } from 'react'
+import Head from 'next/head'
+import { Clock } from '@edgeandnode/gds/icons'
+import { classNames } from '@edgeandnode/gds'
+
+export const getStaticProps = async ({ params }) => {
+  const networks = await getSupportedNetworks()
+  const network = networks.find((n) => n.id === params.id)
+
+if (!network) { return { notFound: true, } }
+
+return { props: { network: { id: network.id, fullName: network.fullName, networkType: network.networkType || 'Unknown', protocol: 'Unknown', chainId: 0, nativeCurrency: 'Unknown', docs: network.docsUrl || '#', }, }, } }
+
+export const getStaticPaths = async () => {
+  const networks = await getSupportedNetworks()
+
+const paths = networks.map((network) => ({ params: { id: network.id }, }))
+
+return { paths, fallback: false, } }
+
+export function BackLink() {
+  const { t } = useI18n()
+  const router = useRouter()
+  const locale = router.locale || router.defaultLocale || 'en'
+
+return ( <div className="mb-6"> <NextLink href={`/${locale}/supported-networks`} className="text-blue-500 hover:underline"> {t('supportedNetworks.back')} </NextLink> </div> ) }
+
+export function DynamicTitle({ title }) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+return ( <Head> <title>{title}</title> </Head> ); }
+
+export function Time({ variant, minutes, className, ...props }) {
+  const { t } = useI18n()
+  return (
+    <div className={classNames(['flex items-center gap-1 leading-none', className])} {...props}>
+      <Clock
+        alt={variant === 'reading' ? t('index.time.reading') : t('index.time.duration')}
+        variant="fill"
+        size={3.5}
+      />
+      {minutes} {t('index.time.minutes')}
+    </div>
+  )
+}
+
+export function EVMResources() {
+  return (
+    <div className="graph-docs-not-markdown mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Card
+        href="https://thegraph.com/docs/en/subgraphs/quick-start/"
+        title="Subgraph quick start"
+        description="Kickstart your journey into subgraph development."
+        slotAboveTitle={<Time variant="reading" minutes={10} />}
+      />
+      <Card
+        href="https://docs.substreams.dev/"
+        title="Substreams"
+        description="Stream high-speed data for real-time indexing."
+        slotAboveTitle={<Time variant="reading" minutes={15} />}
+      />
+      <Card
+        href="https://thegraph.com/docs/en/subgraphs/best-practices/timeseries/"
+        title="Timeseries & Aggregations"
+        description="Learn to track metrics like daily volumes or user growth."
+        slotAboveTitle={<Time variant="reading" minutes={8} />}
+      />
+      <Card
+        href="https://thegraph.com/docs/en/subgraphs/developing/creating/advanced/"
+        title="Advanced subgraph features"
+        description="Leverage features like custom data sources, event handlers, and topic filters."
+        slotAboveTitle={<Time variant="reading" minutes={12} />}
+      />
+      <Card
+        href="https://thegraph.com/docs/en/subgraphs/billing/"
+        title="Billing"
+        description="Optimize costs and manage billing efficiently."
+        slotAboveTitle={<Time variant="reading" minutes={5} />}
+      />
+    </div>
+  )
+}
+
+export function NonEVMResources() {
+  return (
+    <div className="graph-docs-not-markdown mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Card
+        href="https://docs.substreams.dev/"
+        title="Official Substreams docs"
+        description="Stream high-speed data for real-time indexing."
+        slotAboveTitle={<Time variant="reading" minutes={15} />}
+      />
+      <Card
+        href="https://thegraph.com/docs/en/sps/introduction/"
+        title="Substreams-powered Subgraphs Intro"
+        description="Supercharge your subgraph's efficiency with Substreams."
+        slotAboveTitle={<Time variant="reading" minutes={8} />}
+      />
+      <Card
+        href="https://substreams.dev/"
+        title="Substreams.dev"
+        description="Access tutorials, templates, and documentation to build custom data modules."
+        slotAboveTitle={<Time variant="reading" minutes={10} />}
+      />
+      <Card
+        href="https://github.com/streamingfast/substreams-starter"
+        title="Substreams starter"
+        description="Leverage this boilerplate to create your first Substreams module."
+        slotAboveTitle={<Time variant="reading" minutes={5} />}
+      />
+      <Card
+        href="https://github.com/streamingfast/substreams"
+        title="Substreams repo"
+        description="Study, contribute to, or customize the core Substreams framework."
+        slotAboveTitle={<Time variant="reading" minutes={7} />}
+      />
+    </div>
+  )
+}
+
+<DynamicTitle title={props.network.fullName} />
+
+<BackLink />
+
+<h1 className="text-heading-large text-white xs:text-heading-xlarge">{props.network.fullName}</h1>
+
+This guide will quickly take you through how to initialize, create, and deploy your subgraph to Subgraph Studio.
+
+<NetworkDetails network={props.network} />
+
+## Resources
+
+{props.network.id === 'abstract' ? <NonEVMResources /> : <EVMResources />}
