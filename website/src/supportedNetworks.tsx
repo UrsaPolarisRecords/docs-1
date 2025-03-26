@@ -1,6 +1,6 @@
 import { NetworksRegistry } from '@pinax/graph-networks-registry'
-
-import { ExperimentalCodeInline } from '@edgeandnode/gds'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 import { Table } from '@/components'
 import { useI18n } from '@/i18n'
@@ -30,6 +30,8 @@ export async function getSupportedNetworks() {
 
 export function SupportedNetworksTable({ networks }: { networks: Awaited<ReturnType<typeof getSupportedNetworks>> }) {
   const { t } = useI18n()
+  const router = useRouter()
+  const locale = router.locale || router.defaultLocale || 'en'
 
   return (
     <Table>
@@ -43,13 +45,23 @@ export function SupportedNetworksTable({ networks }: { networks: Awaited<ReturnT
         </tr>
         {networks.map((network) => (
           <tr key={network.id}>
-            <td>{network.fullName}</td>
+            <td>
+              <NextLink className="hover:underline" href={`/${locale}/supported-networks/${network.id}`} passHref>
+                {network.fullName}
+              </NextLink>
+            </td>
             <td>
               <code className="font-mono">{network.id}</code>
             </td>
-            <td align="center">{network.subgraphs ? '✓' : null}</td>
-            <td align="center">{network.substreams ? '✓' : null}</td>
-            <td align="center">{network.firehose ? '✓' : null}</td>
+            <td align="center" className="font-mono">
+              {network.subgraphs ? '✓' : null}
+            </td>
+            <td align="center" className="font-mono">
+              {network.substreams ? '✓' : null}
+            </td>
+            <td align="center" className="font-mono">
+              {network.firehose ? '✓' : null}
+            </td>
           </tr>
         ))}
       </tbody>
