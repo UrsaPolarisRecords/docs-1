@@ -5,7 +5,7 @@ hideContentHeader: true
 
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
-import { NetworkDetails, Card } from '@/components'
+import { NetworkDetails, Card, isNonEVMNetwork } from '@/components'
 import { getSupportedNetworks } from '@/supportedNetworks'
 import { useI18n } from '@/i18n'
 import { useEffect } from 'react'
@@ -142,4 +142,4 @@ This guide will quickly take you through how to initialize, create, and deploy y
 
 ## Resources
 
-{props.network.id === 'abstract' ? <NonEVMResources /> : <EVMResources />}
+{isNonEVMNetwork(props.network.id) ? <NonEVMResources /> : <EVMResources />}
