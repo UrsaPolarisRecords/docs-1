@@ -1,9 +1,9 @@
 {
   "name": "Name",
   "id": "ID",
-  "subgraphs": "Subgraphs",
-  "substreams": "Substreams",
-  "firehose": "Firehose",
+  "subgraphs": "सबग्राफ",
+  "substreams": "उपप्रवाह",
+  "firehose": "फायरहोस",
   "back": "← Back to Supported Networks",
   "networkDetails": "Network Details",
   "type": "Type",

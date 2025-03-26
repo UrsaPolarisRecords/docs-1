@@ -1,8 +1,8 @@
 {
   "name": "Name",
   "id": "ID",
-  "subgraphs": "Subgraphs",
-  "substreams": "Substreams",
+  "subgraphs": "子图",
+  "substreams": "子流",
   "firehose": "Firehose",
   "back": "← Back to Supported Networks",
   "networkDetails": "Network Details",

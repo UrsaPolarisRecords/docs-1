@@ -2,7 +2,7 @@
   "name": "Name",
   "id": "ID",
   "subgraphs": "Subgraphs",
-  "substreams": "Substreams",
+  "substreams": "متعدد-السلاسل",
   "firehose": "Firehose",
   "back": "← Back to Supported Networks",
   "networkDetails": "Network Details",

@@ -1,29 +1,29 @@
 {
-  "name": "Name",
+  "name": "Nombre",
   "id": "ID",
-  "subgraphs": "Subgraphs",
-  "substreams": "Substreams",
+  "subgraphs": "Subgrafos",
+  "substreams": "Corrientes secundarias",
   "firehose": "Firehose",
-  "back": "← Back to Supported Networks",
-  "networkDetails": "Network Details",
-  "type": "Type",
-  "protocol": "Protocol",
-  "identifier": "Identifier",
-  "chainId": "Chain ID",
-  "nativeCurrency": "Native Currency",
-  "docs": "Docs",
+  "back": "← Volver a Redes Soportadas",
+  "networkDetails": "Detalles de la Red",
+  "type": "Tipo",
+  "protocol": "Protocolo",
+  "identifier": "Identificador",
+  "chainId": "ID de Cadena",
+  "nativeCurrency": "Moneda Nativa",
+  "docs": "Documentación",
   "features": {
     "activeSubgraphs": {
-      "title": "Active Subgraphs",
-      "description": "Ready to query subgraphs with millions of data points"
+      "title": "Subgraphs Activos",
+      "description": "Listos para consultar subgrafos con millones de puntos de datos"
     },
     "activeIndexers": {
-      "title": "Active Indexers",
-      "description": "Active indexers that indexes all the data"
+      "title": "Indexadores Activos",
+      "description": "Indexadores que indexan todos los datos"
     },
     "averageLatency": {
-      "title": "Average Latency",
-      "description": "Ready to query subgraphs with millions of data points"
+      "title": "Latencia Promedio",
+      "description": "Listos para consultar subgrafos con millones de puntos de datos"
     }
   }
 }
