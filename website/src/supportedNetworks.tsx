@@ -46,7 +46,7 @@ export function SupportedNetworksTable({ networks }: { networks: Awaited<ReturnT
         {networks.map((network) => (
           <tr key={network.id}>
             <td>
-              <NextLink className="hover:underline" href={`/${locale}/supported-networks/${network.id}`} passHref>
+              <NextLink className="underline" href={`/${locale}/supported-networks/${network.id}`} passHref>
                 {network.fullName}
               </NextLink>
             </td>
