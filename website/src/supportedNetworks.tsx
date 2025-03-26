@@ -6,26 +6,7 @@ import { Table } from '@/components'
 import { useI18n } from '@/i18n'
 
 // Networks with Token API support TO EXTERNALIZE @hayderkg
-const tokenAPINetworks = [
-  'mainnet-cl',
-  'holesky-cl',
-  'holesky',
-  'mainnet',
-  'sepolia-cl',
-  'sepolia',
-  'base',
-  'base-sepolia',
-  'bsc',
-  'arbitrum-nova',
-  'arbitrum-one',
-  'arbitrum-sepolia',
-  'polygon-amoy',
-  'matic',
-  'polygon-zkevm-cardona',
-  'polygon-zkevm',
-  'optimism',
-  'optimism-sepolia',
-]
+const tokenAPINetworks = ['mainnet', 'base', 'bsc', 'arbitrum-one', 'matic', 'optimism']
 
 export async function getSupportedNetworks() {
   const registry = await NetworksRegistry.fromLatestVersion()
