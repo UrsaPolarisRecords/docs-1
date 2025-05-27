@@ -8,7 +8,11 @@ Get fast answers to easily integrate and scale with The Graph's high-performance
 
 ### What blockchains does the Token API support?
 
-Currently, the Token API supports Ethereum, Binance Smart Chain (BSC), Polygon, Optimism, Base, Unichain, and Arbitrum One.
+Currently, the Token API supports Ethereum, Binance Smart Chain (BSC), Polygon, Optimism, Base, Unichain, Avalanche, and Arbitrum One.
+
+### Does the Token API support NFTs?
+
+Yes, The Graph Token API currently supports NFT with the ERC-721 and ERC-1155 NFTs, with support for additional standards planned. Endpoints are offered for ownership, collection stats, metadata, sales, holders, and transfer activity.
 
 ### How do I authenticate requests to the Token API, and why doesn't my API key from The Graph Market work?
 
@@ -28,7 +32,7 @@ The Token API supports historical token balances with the `/historical/balances/
 
 ### What exchanges does the Token API use for token prices?
 
-The Token API currently tracks prices on Uniswap v2 and Uniswap v3, with plans to support additional exchanges in the future.
+The Token API currently tracks prices on Uniswap v2, Uniswap v3, and Uniswap v4, with plans to support additional exchanges in the future.
 
 ### Does the Token API provide a client SDK?
 
@@ -42,9 +46,9 @@ Yes, more blockchains will be supported in the future. Please share feedback on 
 
 Yes, improvements to provide data closer to the chain head are planned. Feedback is welcome on [Discord](https://discord.gg/graphprotocol).
 
-### Are there plans to support additional use cases such as NFTs?
+### Are there plans to support additional use cases?
 
-Support for NFT endpoints is coming soon. The Graph ecosystem is actively determining the [roadmap](https://thegraph.com/blog/token-api-the-graph/) for additional use cases. Please provide feedback on specific features you would like prioritized on [Discord](https://discord.gg/graphprotocol).
+The Graph ecosystem is actively determining the [roadmap](https://thegraph.com/blog/token-api-the-graph/) for additional use cases. Please provide feedback on specific features you would like prioritized on [Discord](https://discord.gg/graphprotocol).
 
 ## MCP / LLM / AI Topics
 
@@ -71,6 +75,10 @@ Check that you included the `Authorization: Bearer <jwt>` header with the correc
 ### Are there rate limits or usage costs?
 
 During Beta, the Token API is free for authorized developers. While specific rate limits aren't documented, reasonable throttling exists to prevent abuse. High request volumes may trigger HTTP 429 errors. Monitor official announcements for future pricing changes after Beta.
+
+### What do I do if I notice data inconsistencies in the data returned by the Token API?
+
+If you notice data inconsistencies, please report the issue on our [Discord](https://discord.gg/graphprotocol). Identifying edge cases can help make sure all data is accurate and up-to-date.
 
 ### How do I specify a network?
 
